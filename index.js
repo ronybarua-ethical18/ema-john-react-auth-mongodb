@@ -60,4 +60,4 @@ app.get('/', (req, res) => {
   res.send('Hello MongoDB!')
 })
 
-app.listen(4000)
+app.listen(process.env.PORT || 4000)
