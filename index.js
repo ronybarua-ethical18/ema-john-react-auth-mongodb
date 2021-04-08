@@ -33,7 +33,8 @@ client.connect(err => {
   })
 
   app.get('/products', (req, res) => {
-    productCollection.find({})
+    const search = req.query.search;
+    productCollection.find({name: {$regex: search}})
       .toArray((error, document) => {
         res.send(document);
       })
@@ -60,4 +61,4 @@ app.get('/', (req, res) => {
   res.send('Hello MongoDB!')
 })
 
-app.listen(process.env.PORT || 4000)
+app.listen(4000)
